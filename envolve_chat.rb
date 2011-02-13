@@ -65,7 +65,8 @@ module EnvolveChat
 
       # If first_name is not passed in, the user will be anonymous.
 
-      # To use in a Rails app, make sure you have the hmac-sha1 gem and add this module to your /lib folder. Then call get_html 
+      # To use in a Rails app, make sure you have the hmac-sha1 gem and add this module to your /lib folder. 
+      # Then call EnvolveChat::ChatRenderer.get_html 
       # from a view or helper with the appropriate keywords specified. The function will
       # return javascript that you can use in your page's HTML.
 
