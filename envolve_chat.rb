@@ -130,6 +130,8 @@ module EnvolveChat
       #        Default value: None.
       # is_admin -- optional boolean for the user's admin status.
       #             Default value: False.
+      # string - option customize the strings used in the interface.
+      #             Default value: None.
     
       api_key = EnvolveChat::EnvolveAPIKey.new(envolve_api_key)
       raise EnvolveChat::EnvolveAPIError.new "You must provide at least a first name. If you are providing a username, use it for the first name." unless first_name
@@ -215,6 +217,8 @@ module EnvolveChat
                   groups << "{id : '#{group[:id]}', name : '#{group[:name]}'}"
                 end
              o << "groups : [#{groups.join(',')}]"
+           when "strings"
+             o << "strings : #{opt[1]}"
           end
           end
         return "envoOptions={#{o.join(',')}};"
@@ -222,7 +226,7 @@ module EnvolveChat
     end
     
     def self.get_options(args)
-      return args.select {|k,v| ["people_here_text","people_list_header_text","enable_socialgo","groups"].include? k.to_s }
+      return args.select {|k,v| ["people_here_text","people_list_header_text","enable_socialgo","groups","strings"].include? k.to_s }
     end
   
   end # close class
